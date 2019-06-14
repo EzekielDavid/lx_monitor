@@ -1,0 +1,567 @@
+<!doctype html>
+<html class="sidebar-light sidebar-left-big-icons">
+  <head>
+
+    <!-- Basic -->
+    <meta charset="UTF-8">
+
+    <title>Lite Xpress  | Dashboard 1.0</title>
+    <meta name="keywords" content="HTML5 Admin Template" />
+    <meta name="description" content="Porto Admin - Responsive HTML5 Template">
+    <meta name="author" content="okler.net">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="vendor/animate/animate.css">
+
+    <link rel="stylesheet" href="vendor/font-awesome/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
+
+    <!-- Specific Page Vendor CSS -->
+    <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.theme.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
+    <link rel="stylesheet" href="vendor/morris/morris.css" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="css/theme.css" />
+
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="css/skins/default.css" />
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="vendor/modernizr/modernizr.js"></script>
+
+  </head>
+  <body onload="init()">
+    <section class="body"">
+
+      <!-- start: header -->
+      <header class="header">
+        <div class="logo-container">
+          <a href="../2.1.1" class="logo">
+            <img src="img/lx_logo.png" width="75" height="35" alt="Porto Admin" />
+          </a>
+          <div class="d-md-none toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+            <i class="fas fa-bars" aria-label="Toggle sidebar"></i>
+          </div>
+        </div>
+      
+        <!-- start: search & user box -->
+        <!-- <div class="header-right">
+      
+          <div id="userbox" class="userbox">
+            <a href="#" data-toggle="dropdown">
+              <figure class="profile-picture">
+                <img src="img/!logged-user.jpg" alt="Joseph Doe" class="rounded-circle" data-lock-picture="img/!logged-user.jpg" />
+              </figure>
+              <div class="profile-info" data-lock-name="User" data-lock-email="user@mail.com">
+                <span class="name">User</span>
+ 
+              </div>
+      
+              <i class="fa custom-caret"></i>
+            </a>
+      
+            <div class="dropdown-menu">
+              <ul class="list-unstyled mb-2">
+                <li class="divider"></li>
+                <li>
+                  <a role="menuitem" tabindex="-1"  disabled><i class="fas fa-user"></i> My Profile</a>
+                </li>
+                <li>
+                  <a role="menuitem" tabindex="-1"  disabled><i class="fas fa-lock"></i> Lock Screen</a>
+                </li>
+                <li>
+                  <a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fas fa-power-off"></i> Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <!-- end: search & user box -->
+      </header>
+      <!-- end: header -->
+
+      <div class="inner-wrapper">
+
+        <!-- start: sidebar -->
+        <aside id="sidebar-left" class="sidebar-left">
+        
+            <div class="sidebar-header">
+                <div class="sidebar-title">
+                    Navigation
+                </div>
+                <div class="sidebar-toggle d-none d-md-block" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+                    <i class="fas fa-bars" aria-label="Toggle sidebar"></i>
+                </div>
+            </div>
+        
+            <div class="nano">
+                <div class="nano-content">
+                    <nav id="menu" class="nav-main" role="navigation">
+                    
+                        <ul class="nav nav-main">
+                            <li class="nav-active">
+                                <a class="nav-link" href="lx_dashboard.html">
+                                    <i class="fas fa-home" aria-hidden="true"></i>
+                                    <span>Dashboard</span>
+                                </a>                        
+                            </li>
+                            <li class="nav-parent nav-expanded">
+                                <a class="nav-link" href="lx_monitor.html">
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                    <span>Maps</span>
+                                </a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <hr class="separator" />
+        
+                    <div class="sidebar-widget widget-tasks">
+                        <div class="widget-header">
+                            <h6>Projects</h6>
+                            <div class="widget-toggle">+</div>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="list-unstyled m-0">
+                                <li><a href="#">Porto HTML5 Template</a></li>
+                                <li><a href="#">Tucson Template</a></li>
+                                <li><a href="#">Porto Admin</a></li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <hr class="separator" />
+        
+                    <div class="sidebar-widget widget-stats">
+                        <div class="widget-header">
+                            <h6>Company Stats</h6>
+                            <div class="widget-toggle">+</div>
+                        </div>
+                        <div class="widget-content">
+                            <ul>
+                                <li>
+                                    <span class="stats-title">Stat 1</span>
+                                    <span class="stats-complete">85%</span>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                                            <span class="sr-only">85% Complete</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="stats-title">Stat 2</span>
+                                    <span class="stats-complete">70%</span>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                                            <span class="sr-only">70% Complete</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="stats-title">Stat 3</span>
+                                    <span class="stats-complete">2%</span>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+                                            <span class="sr-only">2% Complete</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        
+                <script>
+                    // Maintain Scroll Position
+                    if (typeof localStorage !== 'undefined') {
+                        if (localStorage.getItem('sidebar-left-position') !== null) {
+                            var initialPosition = localStorage.getItem('sidebar-left-position'),
+                                sidebarLeft = document.querySelector('#sidebar-left .nano-content');
+                            
+                            sidebarLeft.scrollTop = initialPosition;
+                        }
+                    }
+                </script>
+                
+        
+            </div>
+        
+        </aside>
+        <!-- end: sidebar -->
+
+        <section role="main" class="content-body">
+          <header class="page-header">
+            <h2>LX Dashboard</h2>
+          
+            <div class="right-wrapper text-right">
+              <ol class="breadcrumbs">
+                <li>
+                  <a href="lx_dashboard.html">
+                    <i class="fas fa-home"></i>
+                  </a>
+                </li>
+                <li><span>Dashboard</span></li>
+              </ol>
+          
+              <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
+            </div>
+          </header>
+
+            <!-- start: page -->
+           <div class="row">
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-xl-4">
+                  <section class="card card-featured-left card-featured-primary mb-3">
+                    <div class="card-body">
+                      <div class="widget-summary">
+                        <div class="widget-summary-col widget-summary-col-icon">
+                          <div class="summary-icon bg-primary">
+                            <i class="fas fa-life-ring"></i>
+                          </div>
+                        </div>
+                        <div class="widget-summary-col">
+                          <div class="summary">
+                            <h4 class="title">Done</h4>
+                            <div class="info">
+                              <strong class="amount"><span id="b_done"></span></strong>
+                        
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+                <div class="col-xl-4">
+                  <section class="card card-featured-left card-featured-warning">
+                    <div class="card-body">
+                      <div class="widget-summary">
+                        <div class="widget-summary-col widget-summary-col-icon">
+                          <div class="summary-icon bg-secondary">
+                            <i class="fas fa-hourglass-half"></i>
+                          </div>
+                        </div>
+                        <div class="widget-summary-col">
+                          <div class="summary">
+                            <h4 class="title">Delayed</h4>
+                            <div class="info">
+                              <strong class="amount"><span id="b_delay"></span></strong>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+                <div class="col-xl-4">
+                  <section class="card card-featured-left card-featured-secondary">
+                    <div class="card-body">
+                      <div class="widget-summary">
+                        <div class="widget-summary-col widget-summary-col-icon">
+                          <div class="summary-icon bg-secondary">
+                            <i class="fas fa-exclamation-triangle"></i>
+                          </div>
+                        </div>
+                        <div class="widget-summary-col">
+                          <div class="summary">
+                            <h4 class="title">Cancel</h4>
+                            <div class="info">
+                              <strong class="amount"><span id="b_cancel"></span></strong>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- charts -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="row">
+                <div id="container-charts" style="width:100%; height:300%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- end: page -->
+        </section>
+      </div>
+
+      <aside id="sidebar-right" class="sidebar-right">
+        <div class="nano">
+          <div class="nano-content">
+            <a href="#" class="mobile-close d-md-none">
+              Collapse <i class="fas fa-chevron-right"></i>
+            </a>
+      
+            <div class="sidebar-right-wrapper">
+      
+              <div class="sidebar-widget widget-calendar">
+                <h6>Upcoming Tasks</h6>
+                <div data-plugin-datepicker data-plugin-skin="dark"></div>
+      
+                <ul>
+                  <li>
+                    <time datetime="2017-04-19T00:00+00:00">04/19/2017</time>
+                    <span>Company Meeting</span>
+                  </li>
+                </ul>
+              </div>
+      
+              <div class="sidebar-widget widget-friends">
+                <h6>Friends</h6>
+                <ul>
+                  <li class="status-online">
+                    <figure class="profile-picture">
+                      <img src="img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
+                    </figure>
+                    <div class="profile-info">
+                      <span class="name">Joseph Doe Junior</span>
+                      <span class="title">Hey, how are you?</span>
+                    </div>
+                  </li>
+                  <li class="status-online">
+                    <figure class="profile-picture">
+                      <img src="img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
+                    </figure>
+                    <div class="profile-info">
+                      <span class="name">Joseph Doe Junior</span>
+                      <span class="title">Hey, how are you?</span>
+                    </div>
+                  </li>
+                  <li class="status-offline">
+                    <figure class="profile-picture">
+                      <img src="img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
+                    </figure>
+                    <div class="profile-info">
+                      <span class="name">Joseph Doe Junior</span>
+                      <span class="title">Hey, how are you?</span>
+                    </div>
+                  </li>
+                  <li class="status-offline">
+                    <figure class="profile-picture">
+                      <img src="img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
+                    </figure>
+                    <div class="profile-info">
+                      <span class="name">Joseph Doe Junior</span>
+                      <span class="title">Hey, how are you?</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+      
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </section>
+
+    <!-- Vendor -->
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="vendor/popper/umd/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="vendor/common/common.js"></script>
+    <script src="vendor/nanoscroller/nanoscroller.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.js"></script>
+    <script src="vendor/jquery-placeholder/jquery-placeholder.js"></script>
+    
+    <!-- Specific Page Vendor -->
+    <script src="vendor/jquery-ui/jquery-ui.js"></script>
+    <script src="vendor/jqueryui-touch-punch/jqueryui-touch-punch.js"></script>
+    <script src="vendor/jquery-appear/jquery-appear.js"></script>
+    <script src="vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script src="vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="vendor/flot/jquery.flot.js"></script>
+    <script src="vendor/flot.tooltip/flot.tooltip.js"></script>
+    <script src="vendor/flot/jquery.flot.pie.js"></script>
+    <script src="vendor/flot/jquery.flot.categories.js"></script>
+    <script src="vendor/flot/jquery.flot.resize.js"></script>
+    <script src="vendor/jquery-sparkline/jquery-sparkline.js"></script>
+    <script src="vendor/raphael/raphael.js"></script>
+    <script src="vendor/morris/morris.js"></script>
+    <script src="vendor/gauge/gauge.js"></script>
+    <script src="vendor/snap.svg/snap.svg.js"></script>
+    <script src="vendor/liquid-meter/liquid.meter.js"></script>
+    <script src="vendor/jqvmap/jquery.vmap.js"></script>
+    <script src="vendor/jqvmap/data/jquery.vmap.sampledata.js"></script>
+    <script src="vendor/jqvmap/maps/jquery.vmap.world.js"></script>
+    <script src="vendor/jqvmap/maps/continents/jquery.vmap.africa.js"></script>
+    <script src="vendor/jqvmap/maps/continents/jquery.vmap.asia.js"></script>
+    <script src="vendor/jqvmap/maps/continents/jquery.vmap.australia.js"></script>
+    <script src="vendor/jqvmap/maps/continents/jquery.vmap.europe.js"></script>
+    <script src="vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
+    <script src="vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
+    
+    <!-- Theme Base, Components and Settings -->
+    <script src="js/theme.js"></script>
+    
+    <!-- Theme Custom -->
+    <script src="js/custom.js"></script>
+    
+    <!-- Theme Initialization Files -->
+    <script src="js/theme.init.js"></script>
+
+    <!-- Examples -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script type="text/javascript">
+          function init() {
+            loadBoards();
+            loadAlarm();
+          }
+
+          function loadAlarm(){
+            $.ajax({
+              url: 'http://210.14.16.69:8080/api/mobile.php',
+              type: 'post',
+              data: {
+                action: 'loadAlarm'
+              },
+              success: function(data) {
+                  var status = JSON.parse(data);
+                  var count = [];
+                  var name = [];
+
+                  status.forEach(function (item, key) {
+                      count.push(item['Count']);
+                      name.push(item['Status']);
+                      console.log(item['Status']);
+                      if(item['Status'] == 'DONE'){
+                        $("#b_done").text(item['Count']);
+                      } 
+                      if(item['Status'] == 'DELAYED'){
+                        $("#b_delay").text(item['Count']);
+                      } 
+                      if(item['Status'] == 'CANCEL'){
+                        $("#b_cancel").text(item['Count']);
+                      } 
+
+                  });
+
+                                    // based on prepared DOM, initialize echarts instance
+                  var myChart = echarts.init(document.getElementById('container-charts'));
+
+                  // specify chart configuration item and data
+                  var option = {
+                      title: {
+                          text: 'Delivery Status from '+start+'to '+end
+                      },
+                      tooltip: {},
+                      toolbox: {
+                          show : true,
+                          feature : {
+                              mark : {show: true},
+                              dataView : {show: true, readOnly: false},
+                              magicType: {show: true, type: ['line', 'bar']},
+                              restore : {show: true},
+                              saveAsImage : {show: true}
+                          }
+                      },
+                      xAxis: {
+                          data: name
+                      },
+                      yAxis: {},
+                      series: [{
+                          type: 'bar',
+                          data: count
+                      }]
+                  };
+
+                  // use configuration item and data specified to show chart
+                  myChart.setOption(option);
+              }
+            });
+          }
+
+          function loadBoards(){
+              let end = moment().format('MM-DD-YYYY, hh:mm:ss');
+              var start = moment().subtract(60, 'day').format('MM-DD-YYYY, hh:mm:ss');
+              $.ajax({
+              url: 'http://210.14.16.69:8080/api/mobile.php',
+              type: 'post',
+              data: {
+                action: 'countTripStatus',
+                date_end: end,
+                date_start: start
+              },
+              success: function(data) {
+                  var status = JSON.parse(data);
+                  var count = [];
+                  var name = [];
+
+                  status.forEach(function (item, key) {
+                      count.push(item['Count']);
+                      name.push(item['Status']);
+                      console.log(item['Status']);
+                      if(item['Status'] == 'DONE'){
+                        $("#b_done").text(item['Count']);
+                      } 
+                      if(item['Status'] == 'DELAYED'){
+                        $("#b_delay").text(item['Count']);
+                      } 
+                      if(item['Status'] == 'CANCEL'){
+                        $("#b_cancel").text(item['Count']);
+                      } 
+
+                  });
+
+                                    // based on prepared DOM, initialize echarts instance
+                  var myChart = echarts.init(document.getElementById('container-charts'));
+
+                  // specify chart configuration item and data
+                  var option = {
+                      title: {
+                          text: 'Delivery Status from '+start+'to '+end
+                      },
+                      tooltip: {},
+                      toolbox: {
+                          show : true,
+                          feature : {
+                              mark : {show: true},
+                              dataView : {show: true, readOnly: false},
+                              magicType: {show: true, type: ['line', 'bar']},
+                              restore : {show: true},
+                              saveAsImage : {show: true}
+                          }
+                      },
+                      xAxis: {
+                          data: name
+                      },
+                      yAxis: {},
+                      series: [{
+                          type: 'bar',
+                          data: count
+                      }]
+                  };
+
+                  // use configuration item and data specified to show chart
+                  myChart.setOption(option);
+              }
+            });
+          }
+    </script>
+    <script src="js/examples/examples.dashboard.js"></script>
+
+  </body>
+</html>
