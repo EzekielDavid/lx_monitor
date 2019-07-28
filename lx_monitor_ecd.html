@@ -1,11 +1,16 @@
+<!Doctype html>
+
+
+
+
 <!doctype html>
-<html class="sidebar-light sidebar-left-big-icons">
+  <html class="sidebar-light sidebar-left-big-icons fixed sidebar-left-with-menu">
   <head>
 
     <!-- Basic -->
     <meta charset="UTF-8">
 
-    <title>Lite Xpress  | Dashboard 1.0</title>
+    <title>Lite Xpress  | Monitoring 1.0</title>
     <meta name="keywords" content="HTML5 Admin Template" />
     <meta name="description" content="Porto Admin - Responsive HTML5 Template">
     <meta name="author" content="okler.net">
@@ -25,10 +30,9 @@
     <link rel="stylesheet" href="vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
 
     <!-- Specific Page Vendor CSS -->
-    <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.css" />
-    <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.theme.css" />
-    <link rel="stylesheet" href="vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
-    <link rel="stylesheet" href="vendor/morris/morris.css" />
+
+    <link rel="stylesheet" href="vendor/select2/css/select2.css" />
+    <link rel="stylesheet" href="vendor/select2-bootstrap-theme/select2-bootstrap.min.css" />
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="css/theme.css" />
@@ -39,12 +43,54 @@
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
 
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
+
+    <style>
+      #map {
+        height: 800px;
+        width: 100%;
+      }
+
+      .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+      }
+
+      .active, .accordion:hover {
+        background-color: #ccc;
+      }
+
+      .panel {
+        padding: 0 18px;
+        background-color: white;
+        display: none;
+        overflow: hidden;
+        } #container {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+    </style>
+
     <!-- Head Libs -->
     <script src="vendor/modernizr/modernizr.js"></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24"></script>
+    <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-traffic.js?key=lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24"></script>
 
   </head>
   <body onload="init()">
-    <section class="body"">
+    <section class="body">
 
       <!-- start: header -->
       <header class="header">
@@ -56,48 +102,187 @@
             <i class="fas fa-bars" aria-label="Toggle sidebar"></i>
           </div>
         </div>
-      
-        <!-- start: search & user box -->
-        <!-- <div class="header-right">
-      
-          <div id="userbox" class="userbox">
-            <a href="#" data-toggle="dropdown">
-              <figure class="profile-picture">
-                <img src="img/!logged-user.jpg" alt="Joseph Doe" class="rounded-circle" data-lock-picture="img/!logged-user.jpg" />
-              </figure>
-              <div class="profile-info" data-lock-name="User" data-lock-email="user@mail.com">
-                <span class="name">User</span>
- 
-              </div>
-      
-              <i class="fa custom-caret"></i>
-            </a>
-      
-            <div class="dropdown-menu">
-              <ul class="list-unstyled mb-2">
-                <li class="divider"></li>
-                <li>
-                  <a role="menuitem" tabindex="-1"  disabled><i class="fas fa-user"></i> My Profile</a>
-                </li>
-                <li>
-                  <a role="menuitem" tabindex="-1"  disabled><i class="fas fa-lock"></i> Lock Screen</a>
-                </li>
-                <li>
-                  <a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fas fa-power-off"></i> Logout</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div> -->
-        <!-- end: search & user box -->
+
+                <!-- start: search & user box -->
+                <div class="header-right">
+
+
+                  <span class="separator"></span>
+
+                  <ul class="notifications">
+                    <!-- <li>
+                      <a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+                        <i class="fas fa-tasks"></i>
+                        <span class="badge">3</span>
+                      </a>
+
+                      <div class="dropdown-menu notification-menu large">
+                        <div class="notification-title">
+                          <span class="float-right badge badge-default">3</span>
+                          Tasks
+                        </div>
+
+                        <div class="content">
+                          <ul>
+                            <li>
+                              <p class="clearfix mb-1">
+                                <span class="message float-left">Generating Sales Report</span>
+                                <span class="message float-right text-dark">60%</span>
+                              </p>
+                              <div class="progress progress-xs light">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                              </div>
+                            </li>
+
+                            <li>
+                              <p class="clearfix mb-1">
+                                <span class="message float-left">Importing Contacts</span>
+                                <span class="message float-right text-dark">98%</span>
+                              </p>
+                              <div class="progress progress-xs light">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="width: 98%;"></div>
+                              </div>
+                            </li>
+
+                            <li>
+                              <p class="clearfix mb-1">
+                                <span class="message float-left">Uploading something big</span>
+                                <span class="message float-right text-dark">33%</span>
+                              </p>
+                              <div class="progress progress-xs light mb-1">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;"></div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+                        <i class="fas fa-envelope"></i>
+                        <span class="badge">4</span>
+                      </a>
+
+                      <div class="dropdown-menu notification-menu">
+                        <div class="notification-title">
+                          <span class="float-right badge badge-default">230</span>
+                          Messages
+                        </div>
+
+                        <div class="content">
+                          <ul>
+                            <li>
+                              <a href="#" class="clearfix">
+                                <figure class="image">
+                                  <img src="img/!sample-user.jpg" alt="Joseph Doe Junior" class="rounded-circle" />
+                                </figure>
+                                <span class="title">Joseph Doe</span>
+                                <span class="message">Lorem ipsum dolor sit.</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" class="clearfix">
+                                <figure class="image">
+                                  <img src="img/!sample-user.jpg" alt="Joseph Junior" class="rounded-circle" />
+                                </figure>
+                                <span class="title">Joseph Junior</span>
+                                <span class="message truncate">Truncated message. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet lacinia orci. Proin vestibulum eget risus non luctus. Nunc cursus lacinia lacinia. Nulla molestie malesuada est ac tincidunt. Quisque eget convallis diam, nec venenatis risus. Vestibulum blandit faucibus est et malesuada. Sed interdum cursus dui nec venenatis. Pellentesque non nisi lobortis, rutrum eros ut, convallis nisi. Sed tellus turpis, dignissim sit amet tristique quis, pretium id est. Sed aliquam diam diam, sit amet faucibus tellus ultricies eu. Aliquam lacinia nibh a metus bibendum, eu commodo eros commodo. Sed commodo molestie elit, a molestie lacus porttitor id. Donec facilisis varius sapien, ac fringilla velit porttitor et. Nam tincidunt gravida dui, sed pharetra odio pharetra nec. Duis consectetur venenatis pharetra. Vestibulum egestas nisi quis elementum elementum.</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" class="clearfix">
+                                <figure class="image">
+                                  <img src="img/!sample-user.jpg" alt="Joe Junior" class="rounded-circle" />
+                                </figure>
+                                <span class="title">Joe Junior</span>
+                                <span class="message">Lorem ipsum dolor sit.</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" class="clearfix">
+                                <figure class="image">
+                                  <img src="img/!sample-user.jpg" alt="Joseph Junior" class="rounded-circle" />
+                                </figure>
+                                <span class="title">Joseph Junior</span>
+                                <span class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet lacinia orci. Proin vestibulum eget risus non luctus. Nunc cursus lacinia lacinia. Nulla molestie malesuada est ac tincidunt. Quisque eget convallis diam.</span>
+                              </a>
+                            </li>
+                          </ul>
+
+                          <hr />
+
+                          <div class="text-right">
+                            <a href="#" class="view-more">View All</a>
+                          </div>
+                        </div>
+                      </div>
+                    </li> -->
+                    <li>
+                      <a href="#" class="dropdown-toggle notification-icon" onClick="clearNotif(this)" data-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge notif_count"></span>
+                      </a>
+
+                      <div class="dropdown-menu notification-menu">
+                        <div class="notification-title">
+                          <span class="float-right badge badge-default notif_count"></span>
+                          Alerts
+                        </div>
+
+                        <div class="content">
+                          <ul id="notif_ul" class="notif_ul">
+                          </ul>
+
+                          <!-- <hr />
+
+                          <div class="text-right">
+                            <a href="#" class="view-more">View All</a>
+                          </div> -->
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <span class="separator"></span>
+
+                  <div id="userbox" class="userbox">
+                    <!-- <a href="#" data-toggle="dropdown">
+                      <figure class="profile-picture">
+                        <img src="img/!logged-user.jpg" alt="Joseph Doe" class="rounded-circle" data-lock-picture="img/!logged-user.jpg" />
+                      </figure>
+                      <div class="profile-info" data-lock-name="User" data-lock-email="user@mail.com">
+                        <span class="name">User</span>
+
+                      </div>
+
+                      <i class="fa custom-caret"></i>
+                    </a>
+
+                    <div class="dropdown-menu">
+                      <ul class="list-unstyled mb-2">
+                        <li class="divider"></li>
+                        <li>
+                          <a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fas fa-user"></i> My Profile</a>
+                        </li>
+                        <li>
+                          <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fas fa-lock"></i> Lock Screen</a>
+                        </li>
+                        <li>
+                          <a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fas fa-power-off"></i> Logout</a>
+                        </li>
+                      </ul>
+                    </div> -->
+                  </div>
+                </div>
+                <!-- end: search & user box -->
+
       </header>
       <!-- end: header -->
 
       <div class="inner-wrapper">
-
         <!-- start: sidebar -->
         <aside id="sidebar-left" class="sidebar-left">
-        
+
             <div class="sidebar-header">
                 <div class="sidebar-title">
                     Navigation
@@ -106,30 +291,59 @@
                     <i class="fas fa-bars" aria-label="Toggle sidebar"></i>
                 </div>
             </div>
-        
+
             <div class="nano">
                 <div class="nano-content">
                     <nav id="menu" class="nav-main" role="navigation">
-                    
+
                         <ul class="nav nav-main">
-                            <li class="nav-active">
+                           <li class="nav-parent nav-expanded">
                                 <a class="nav-link" href="lx_dashboard.html">
                                     <i class="fas fa-home" aria-hidden="true"></i>
                                     <span>Dashboard</span>
-                                </a>                        
+                                </a>
                             </li>
-                            <li class="nav-parent nav-expanded">
+							              <li class="nav-active">
+
                                 <a class="nav-link" href="lx_monitor.html">
                                     <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                     <span>Maps</span>
                                 </a>
                             </li>
-        
+				                    <li class="nav-parent nav-expanded">
+				                        <a class="nav-link" href="#">
+				                            <i class="fas fa-file-alt" aria-hidden="true"></i>
+				                            <span>Reports</span>
+				                        </a>
+				                        <ul class="nav nav-children">
+				                            <li>
+				                                <a class="nav-link" href="lx_reports_waybill.html">
+				                                   Waybills
+				                                </a>
+				                            </li>
+				                            <li>
+				                                <a class="nav-link" href="lx_reports_routes.html">
+				                                    Routes
+				                                </a>
+				                            </li>
+				                            <li>
+				                                <a class="nav-link" href="lx_reports_alerts.html">
+				                                    Alert
+				                                </a>
+				                            </li>
+				                            <li>
+				                                <a class="nav-link" href="lx_reports_courier.html">
+				                                    Courier Activity
+				                                </a>
+				                            </li>
+				                        </ul>
+				                    </li>
+
                         </ul>
                     </nav>
-        
+
                     <hr class="separator" />
-        
+
                     <div class="sidebar-widget widget-tasks">
                         <div class="widget-header">
                             <h6>Projects</h6>
@@ -143,9 +357,9 @@
                             </ul>
                         </div>
                     </div>
-        
+
                     <hr class="separator" />
-        
+
                     <div class="sidebar-widget widget-stats">
                         <div class="widget-header">
                             <h6>Company Stats</h6>
@@ -184,29 +398,30 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <script>
                     // Maintain Scroll Position
                     if (typeof localStorage !== 'undefined') {
                         if (localStorage.getItem('sidebar-left-position') !== null) {
                             var initialPosition = localStorage.getItem('sidebar-left-position'),
                                 sidebarLeft = document.querySelector('#sidebar-left .nano-content');
-                            
+
                             sidebarLeft.scrollTop = initialPosition;
                         }
                     }
                 </script>
-                
-        
+
+
             </div>
-        
+
         </aside>
         <!-- end: sidebar -->
 
+
         <section role="main" class="content-body">
-          <header class="page-header">
-            <h2>LX Dashboard</h2>
-          
+                    <header class="page-header">
+            <h2>LX Real Time Monitoring</h2>
+
             <div class="right-wrapper text-right">
               <ol class="breadcrumbs">
                 <li>
@@ -214,164 +429,215 @@
                     <i class="fas fa-home"></i>
                   </a>
                 </li>
-                <li><span>Dashboard</span></li>
+                <li><span>Maps</span></li>
+                <li><span>Monitor</span></li>
               </ol>
-          
+
               <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
             </div>
           </header>
 
-            <!-- start: page -->
-           <div class="row">
-            <div class="col-lg-12">
-              <div class="row">
-                <div class="col-xl-4">
-                  <section class="card card-featured-left card-featured-primary mb-3">
-                    <div class="card-body">
-                      <div class="widget-summary">
-                        <div class="widget-summary-col widget-summary-col-icon">
-                          <div class="summary-icon bg-primary">
-                            <i class="fas fa-life-ring"></i>
+          <!-- start: page -->
+          <section class="content-with-menu" data-theme-gmap-builder>
+            <div class="content-with-menu-container">
+
+              <div class="inner-menu-toggle">
+                <a href="#" class="inner-menu-expand" data-open="inner-menu">
+                  Show Options <i class="fas fa-chevron-right"></i>
+                </a>
+              </div>
+
+              <menu id="content-menu" class="inner-menu" role="menu">
+                <div class="nano">
+                  <div class="nano-content">
+
+                    <div class="inner-menu-toggle-inside">
+                      <a href="#" class="inner-menu-collapse">
+                        <i class="fas fa-chevron-up d-inline-block d-md-none"></i><i class="fas fa-chevron-left d-none d-md-inline-block"></i> Hide Options
+                      </a>
+                      <a href="#" class="inner-menu-expand" data-open="inner-menu">
+                        Show Options <i class="fas fa-chevron-down"></i>
+                      </a>
+                    </div>
+
+                    <div class="inner-menu-content">
+
+                      <p class="title">Search Input</p>
+
+                      <div class="form-group">
+                        <div class="row">
+
+                          <div class="col-sm-12">
+                            <select id="user_list" data-plugin-selectTwo class="form-control populate user_list" name="users">
+                              <option value=""> All </option>
+                            </select>
                           </div>
-                        </div>
-                        <div class="widget-summary-col">
-                          <div class="summary">
-                            <h4 class="title">Done</h4>
-                            <div class="info">
-                              <strong class="amount"><span id="b_done"></span></strong>
-                        
-                            </div>
+                          <label class="col-sm-12 control-label">Focus Map to:</label>
+                          <div class="col-sm-12">
+                            <select id="focusmapto" data-plugin-selectTwo class="form-control" name="focusmapto">
+                              <option value="14.6181246,121.0460741"> Main Branch</option>
+                              <option value="14.6564217,121.0323987">SM City North Edsa,</option>
+                              <option value="7.1387,125.6265">Davao - Brgy. Communal</option>
+                              <option value="8.4513,124.6912">Cagayan De Oro  - Cugman</option>
+                              <option value="11.2106,125.0110">Tacloban  - Brgy 77</option>
+                              <option value="10.3321,123.9357">Cebu</option>
+                              <option value="107.22606,122.541987">IloIlo - Brgy PHHC</option>
+                            </select>
+                          </div>
+                          <label class="col-sm-12 control-label">Date</label>
+                          <div class="col-sm-12">
+                            <div class="input-group">
+                            <span class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="fas fa-calendar-alt"></i>
+                              </span>
+                            </span>
+                            <input id="date" type="date"  class="form-control">
+                          </div>
+                          </div>
+
+
+                          <label class="col-sm-12 control-label" for="longitude">End Date</label>
+                          <div class="col-sm-12">
+                            <div class="input-group">
+                            <span class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="fas fa-calendar-alt"></i>
+                              </span>
+                            </span>
+                            <input id="date_end" type="date"  class="form-control">
+                          </div>
                           </div>
                         </div>
                       </div>
+
+                      <hr class="separator" />
+
+                      <div class="form-group">
+                        <ul id="MarkersList" class="list-markers list-unstyled mb-3 hidden">
+                        </ul>
+
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <button class="btn btn-primary btn-block mb-3 float-right" type="button" onclick="search()">Search</button>
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
-                  </section>
+                  </div>
                 </div>
-                <div class="col-xl-4">
-                  <section class="card card-featured-left card-featured-warning">
-                    <div class="card-body">
-                      <div class="widget-summary">
-                        <div class="widget-summary-col widget-summary-col-icon">
-                          <div class="summary-icon bg-secondary">
-                            <i class="fas fa-hourglass-half"></i>
-                          </div>
-                        </div>
-                        <div class="widget-summary-col">
-                          <div class="summary">
-                            <h4 class="title">Delayed</h4>
-                            <div class="info">
-                              <strong class="amount"><span id="b_delay"></span></strong>
+              </menu>
+              <div class="inner-body">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="row">
+                      <div class="col-xl-4">
+                        <section class="card card-featured-left card-featured-primary mb-3">
+                          <div class="card-body">
+                            <div class="widget-summary">
+                              <div class="widget-summary-col widget-summary-col-icon">
+                                <div class="summary-icon bg-primary">
+                                  <i class="fas fa-life-ring"></i>
+                                </div>
+                              </div>
+                              <div class="widget-summary-col">
+                                <div class="summary">
+                                  <h4 class="title">Active Users</h4>
+                                  <div class="info">
+                                    <strong class="amount"><span id="b_active">0</span></strong>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        </section>
+                      </div>
+                      <div class="col-xl-4">
+                        <section class="card card-featured-left card-featured-success">
+                          <div class="card-body">
+                            <div class="widget-summary">
+                              <div class="widget-summary-col widget-summary-col-icon">
+                                <div class="summary-icon bg-success">
+                                  <i class="fas fa-truck"></i>
+                                </div>
+                              </div>
+                              <div class="widget-summary-col">
+                                <div class="summary">
+                                  <h4 class="title">Intransit</h4>
+                                  <div class="info">
+                                    <strong class="amount"><span id="b_transit">0</span></strong>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                      <div class="col-xl-4">
+                        <section class="card card-featured-left card-featured-info">
+                          <div class="card-body">
+                            <div class="widget-summary">
+                              <div class="widget-summary-col widget-summary-col-icon">
+                                <div class="summary-icon bg-info">
+                                  <i class="fas fa-globe"></i>
+                                </div>
+                              </div>
+                              <div class="widget-summary-col">
+                                <div class="summary">
+                                  <h4 class="title">Total</h4>
+                                  <div class="info">
+                                    <strong class="amount"><span id="b_total">0</span></strong>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
                       </div>
                     </div>
-                  </section>
+                  </div>
                 </div>
-                <div class="col-xl-4">
-                  <section class="card card-featured-left card-featured-secondary">
-                    <div class="card-body">
-                      <div class="widget-summary">
-                        <div class="widget-summary-col widget-summary-col-icon">
-                          <div class="summary-icon bg-secondary">
-                            <i class="fas fa-exclamation-triangle"></i>
-                          </div>
-                        </div>
-                        <div class="widget-summary-col">
-                          <div class="summary">
-                            <h4 class="title">Cancel</h4>
-                            <div class="info">
-                              <strong class="amount"><span id="b_cancel"></span></strong>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
+               <button class="accordion">User Actvities</button>
+
+  <canvas id="status_graph" width="400" height="400"></canvas>
+
+
+  <div class="panel">
+  </div>
+  <br>
+  <center><h2><p id = "search_result">Today's Realtime Activities</p></h2></center>
+  <div id="distancetraveled_div"><center><h2> Distance Traveled: <b><span id="distancetraveled"></span> km</b></h2></center></div>
+  <div id="map"></div><center>
+              </div>
+          </section>
+          <div id="modalFull" class="modal-block modal-block-full mfp-hide">
+            <section class="card">
+              <header class="card-header">
+                <h2 class="card-title">Are you sure?</h2>
+              </header>
+              <div class="card-body">
+                <div class="modal-wrapper">
+                  <div class="modal-text">
+                    <p class="mb-0">Are you sure that you want to delete this image?</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <!-- charts -->
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="row">
-                <div id="container-charts" style="width:100%; height:300%;"></div>
-              </div>
-            </div>
+              <footer class="card-footer">
+                <div class="row">
+                  <div class="col-md-12 text-right">
+                    <button class="btn btn-primary modal-confirm">Confirm</button>
+                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                  </div>
+                </div>
+              </footer>
+            </section>
           </div>
 
           <!-- end: page -->
         </section>
       </div>
 
-      <aside id="sidebar-right" class="sidebar-right">
-        <div class="nano">
-          <div class="nano-content">
-            <a href="#" class="mobile-close d-md-none">
-              Collapse <i class="fas fa-chevron-right"></i>
-            </a>
-      
-            <div class="sidebar-right-wrapper">
-      
-              <div class="sidebar-widget widget-calendar">
-                <h6>Upcoming Tasks</h6>
-                <div data-plugin-datepicker data-plugin-skin="dark"></div>
-      
-                <ul>
-                  <li>
-                    <time datetime="2017-04-19T00:00+00:00">04/19/2017</time>
-                    <span>Company Meeting</span>
-                  </li>
-                </ul>
-              </div>
-      
-              <div class="sidebar-widget widget-friends">
-                <h6>Friends</h6>
-                <ul>
-                  <li class="status-online">
-                    <figure class="profile-picture">
-                      <img src="img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
-                    </figure>
-                    <div class="profile-info">
-                      <span class="name">Joseph Doe Junior</span>
-                      <span class="title">Hey, how are you?</span>
-                    </div>
-                  </li>
-                  <li class="status-online">
-                    <figure class="profile-picture">
-                      <img src="img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
-                    </figure>
-                    <div class="profile-info">
-                      <span class="name">Joseph Doe Junior</span>
-                      <span class="title">Hey, how are you?</span>
-                    </div>
-                  </li>
-                  <li class="status-offline">
-                    <figure class="profile-picture">
-                      <img src="img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
-                    </figure>
-                    <div class="profile-info">
-                      <span class="name">Joseph Doe Junior</span>
-                      <span class="title">Hey, how are you?</span>
-                    </div>
-                  </li>
-                  <li class="status-offline">
-                    <figure class="profile-picture">
-                      <img src="img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
-                    </figure>
-                    <div class="profile-info">
-                      <span class="name">Joseph Doe Junior</span>
-                      <span class="title">Hey, how are you?</span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-      
-            </div>
-          </div>
-        </div>
-      </aside>
 
     </section>
 
@@ -385,183 +651,532 @@
     <script src="vendor/nanoscroller/nanoscroller.js"></script>
     <script src="vendor/magnific-popup/jquery.magnific-popup.js"></script>
     <script src="vendor/jquery-placeholder/jquery-placeholder.js"></script>
-    
+
     <!-- Specific Page Vendor -->
-    <script src="vendor/jquery-ui/jquery-ui.js"></script>
-    <script src="vendor/jqueryui-touch-punch/jqueryui-touch-punch.js"></script>
-    <script src="vendor/jquery-appear/jquery-appear.js"></script>
-    <script src="vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
-    <script src="vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.js"></script>
-    <script src="vendor/flot/jquery.flot.js"></script>
-    <script src="vendor/flot.tooltip/flot.tooltip.js"></script>
-    <script src="vendor/flot/jquery.flot.pie.js"></script>
-    <script src="vendor/flot/jquery.flot.categories.js"></script>
-    <script src="vendor/flot/jquery.flot.resize.js"></script>
-    <script src="vendor/jquery-sparkline/jquery-sparkline.js"></script>
-    <script src="vendor/raphael/raphael.js"></script>
-    <script src="vendor/morris/morris.js"></script>
-    <script src="vendor/gauge/gauge.js"></script>
-    <script src="vendor/snap.svg/snap.svg.js"></script>
-    <script src="vendor/liquid-meter/liquid.meter.js"></script>
-    <script src="vendor/jqvmap/jquery.vmap.js"></script>
-    <script src="vendor/jqvmap/data/jquery.vmap.sampledata.js"></script>
-    <script src="vendor/jqvmap/maps/jquery.vmap.world.js"></script>
-    <script src="vendor/jqvmap/maps/continents/jquery.vmap.africa.js"></script>
-    <script src="vendor/jqvmap/maps/continents/jquery.vmap.asia.js"></script>
-    <script src="vendor/jqvmap/maps/continents/jquery.vmap.australia.js"></script>
-    <script src="vendor/jqvmap/maps/continents/jquery.vmap.europe.js"></script>
-    <script src="vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
-    <script src="vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
-    
+
+    <script src="vendor/select2/js/select2.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script src="vendor/snazzy-themes/snazzy.themes.js"></script>
     <!-- Theme Base, Components and Settings -->
     <script src="js/theme.js"></script>
-    
+
     <!-- Theme Custom -->
     <script src="js/custom.js"></script>
-    
+
     <!-- Theme Initialization Files -->
     <script src="js/theme.init.js"></script>
 
-    <!-- Examples -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="js/echarts.min.js"></script>
-    <script type="text/javascript">
-          function init() {
-            loadBoards();
-            loadAlarm();
-          }
+      <!-- Examples -->
+    <script src="js/examples/examples.map.builder.js"></script>
+		<script src="js/examples/examples.modals.js"></script>
+    <script>
+      (function($) {
+        $('#focusmapto').on('change', function(){
+          var str1 = $(this).val();
+        var chunks = str1.split(",");
+        console.log(chunks);
+          map.setView(new L.LatLng(parseFloat(chunks[0]), parseFloat(chunks[1])), 13);
+        });
+      }).apply(this, [jQuery]);
+    </script>
+    <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+$('#distancetraveled_div').hide();
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
 
-          function loadAlarm(){
+    }
+    </script>
+
+    <script>
+          var map;
+          var _batch_location;
+          var _info;
+          var markers;
+          var status_graph;
+          var isStart = 1;
+          var $last_alarm = 'isFirst';
+          var alarm = new Audio("src/loud_alarm.mp3");
+          var isPlayAlarm = false;
+          var notif_count = 0;
+          var coordLat = null;
+          var coordLng = null;
+          var totaldist = 0;
+
+          setInterval(request_next_batch_location, 5000);
+          setInterval(update_users_status, 3000);
+          setInterval(loadAlarm, 5000);
+          setInterval(start_play, 5000);
+
+          function load_users()
+          {
             $.ajax({
               url: 'http://210.14.16.69:8080/api/mobile.php',
               type: 'post',
               data: {
-                action: 'loadAlarm'
+                action: 'get_users'
               },
               success: function(data) {
-                  var status = JSON.parse(data);
-                  var count = [];
-                  var name = [];
-
-                  status.forEach(function (item, key) {
-                      count.push(item['Count']);
-                      name.push(item['Status']);
-                      console.log(item['Status']);
-                      if(item['Status'] == 'DONE'){
-                        $("#b_done").text(item['Count']);
-                      } 
-                      if(item['Status'] == 'DELAYED'){
-                        $("#b_delay").text(item['Count']);
-                      } 
-                      if(item['Status'] == 'CANCEL'){
-                        $("#b_cancel").text(item['Count']);
-                      } 
-
-                  });
-
-                                    // based on prepared DOM, initialize echarts instance
-                  var myChart = echarts.init(document.getElementById('container-charts'));
-
-                  // specify chart configuration item and data
-                  var option = {
-                      title: {
-                          text: 'Delivery Status from '+start+'to '+end
-                      },
-                      tooltip: {},
-                      toolbox: {
-                          show : true,
-                          feature : {
-                              mark : {show: true},
-                              dataView : {show: true, readOnly: false},
-                              magicType: {show: true, type: ['line', 'bar']},
-                              restore : {show: true},
-                              saveAsImage : {show: true}
-                          }
-                      },
-                      xAxis: {
-                          data: name
-                      },
-                      yAxis: {},
-                      series: [{
-                          type: 'bar',
-                          data: count
-                      }]
-                  };
-
-                  // use configuration item and data specified to show chart
-                  myChart.setOption(option);
+                var users = JSON.parse(data);
+                users.forEach(function(user) {
+                  var new_option = document.createElement("OPTION");
+                  new_option.setAttribute("value", user['id']);
+                  new_option.text = user['name'];
+                  $('.user_list').append(new_option);
+                });
+                $(document).ready(function() {
+                  $('.user_list').select2();
+                });
+                var id = localStorage.getItem("searched_user_id");
+                var text = localStorage.getItem("searched_user_text");
+                if(id){
+                  $("#user_list").val(id);
+                }
               }
             });
           }
-
-          function loadBoards(){
-              let end = moment().format('MM-DD-YYYY, hh:mm:ss');
-              var start = moment().subtract(60, 'day').format('MM-DD-YYYY, hh:mm:ss');
-              $.ajax({
+          function update_users_status()
+          {
+            $.ajax({
               url: 'http://210.14.16.69:8080/api/mobile.php',
               type: 'post',
               data: {
-                action: 'countTripStatus',
-                date_end: end,
-                date_start: start
+                action: 'get_user_status'
               },
               success: function(data) {
                   var status = JSON.parse(data);
-                  var count = [];
-                  var name = [];
-
-                  status.forEach(function (item, key) {
-                      count.push(item['Count']);
-                      name.push(item['Status']);
-                      console.log(item['Status']);
-                      if(item['Status'] == 'DONE'){
-                        $("#b_done").text(item['Count']);
-                      } 
-                      if(item['Status'] == 'DELAYED'){
-                        $("#b_delay").text(item['Count']);
-                      } 
-                      if(item['Status'] == 'CANCEL'){
-                        $("#b_cancel").text(item['Count']);
-                      } 
-
-                  });
-
-                                    // based on prepared DOM, initialize echarts instance
-                  var myChart = echarts.init(document.getElementById('container-charts'));
-
-                  // specify chart configuration item and data
-                  var option = {
-                      title: {
-                          text: 'Delivery Status from '+start+'to '+end
-                      },
-                      tooltip: {},
-                      toolbox: {
-                          show : true,
-                          feature : {
-                              mark : {show: true},
-                              dataView : {show: true, readOnly: false},
-                              magicType: {show: true, type: ['line', 'bar']},
-                              restore : {show: true},
-                              saveAsImage : {show: true}
-                          }
-                      },
-                      xAxis: {
-                          data: name
-                      },
-                      yAxis: {},
-                      series: [{
-                          type: 'bar',
-                          data: count
-                      }]
-                  };
-
-                  // use configuration item and data specified to show chart
-                  myChart.setOption(option);
+                  $('#b_active').html(status['online_users']);
+                  $('#b_transit').html(status['intransit_users']);
+                  $('#b_total').html(status['user_count']);
+                  status_graph.data.datasets[0].data =
+                  [status['online_users'], status['intransit_users'],status['user_count']];
+                  status_graph.update();
               }
             });
           }
-    </script>
-    <script src="js/examples/examples.dashboard.js"></script>
+          function load_users_status()
+          {
+            $.ajax({
+              url: 'http://210.14.16.69:8080/api/mobile.php',
+              type: 'post',
+              data: {
+                action: 'get_user_status'
+              },
+              success: function(data) {
+                console.log('status');
+                var status = JSON.parse(data);
+                var ctx = document.getElementById("status_graph");
 
+                $('#b_active').html(status['online_users']);
+                  $('#b_transit').html(status['intransit_users']);
+                  $('#b_total').html(status['user_count']);
+                
+                ctx.height = 50;
+                status_graph = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: ["Online", "In-transit", "Total User"],
+                    datasets: [{
+                      label: 'Current activities of users',
+                      data: [status['online_users'], status['intransit_users'], status['user_count']],
+                      backgroundColor: [
+                      'rgba(255, 192, 0, 1)',
+                      'rgba(255, 192, 0, 1)',
+                      'rgba(255, 192, 0, 1)'
+                      ],
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      yAxes: [{
+                       ticks: {
+                        min: 1,
+                        max: parseInt(status['user_count'])
+                      }
+                    }]
+                  }
+                }
+              });
+              }
+            });
+          }
+          function search() {
+            localStorage.setItem("date", document.getElementById("date").valueAsDate);
+            localStorage.setItem("date_end", document.getElementById("date_end").valueAsDate);
+            var data = $('.user_list').select2('data');
+            var id = data[0].id;
+            var text = data[0].text;
+            if ( id != '-1' && id !== '') {
+              localStorage.setItem("searched_user_id", id);
+              localStorage.setItem("searched_user_text", text);
+            }
+            localStorage.setItem("searched", true);
+            window.location.reload(true);
+          }
+
+          function set_date_today() {
+            $.ajax({
+              url: 'http://210.14.16.69:8080/api/mobile.php',
+              type: 'post',
+              data: {
+                action: 'get_time',
+                format: 'Y-m-d'
+              },
+              success: function(data) {
+                data += 'T00:00:00.000Z';
+                var latest_date = new Date(data);
+                document.getElementById("date").valueAsDate = latest_date;
+                localStorage.setItem("date", latest_date);
+
+                document.getElementById("date_end").valueAsDate = latest_date;
+                localStorage.setItem("date_end", latest_date);
+              }
+            });
+          }
+
+          function init_date() {
+            if (localStorage.getItem("date") == null) {
+              set_date_today();
+            } else {
+              document.getElementById("date").valueAsDate = new Date(localStorage.getItem("date"));
+              document.getElementById("date_end").valueAsDate = new Date(localStorage.getItem("date_end"));
+            }
+          }
+
+          function loadAlarm(){
+            console.log('last Alarm' + $last_alarm);
+            $.ajax({
+              url: 'http://210.14.16.69:8080/api/mobile.php',
+              type: 'post',
+              data: {
+                action: 'loadAlarm',
+                alarm_id: $last_alarm
+              },
+              success: function(data) {
+                var res = JSON.parse(data);
+                notif_count = notif_count + res.length;
+                console.log('notif count:' + notif_count);
+                $('.notif_count').text(notif_count);
+                  $.each(res, function(key, value){
+                    console.log(value);
+                    if(value['status']){
+                      status_sign = "fa-exclamation-triangle bg-danger text-light";
+                    } else{
+                      status_sign = "fa-bell bg-warning text-light";
+                    }
+                    list =     '<li>' +
+                              '<a onClick="stop_play(this)" class="mb-1 mt-1 mr-1 modal-sizes btn btn-default clearfix link-list" data-id="'+value['id']+'" data-lat="'+value['latitude']+'" data-lng="'+value['longitude']+'">' +
+                                '<div class="image"><i class="fas '+status_sign+'"></i></div>'+
+                                '<p class="clearfix mb-1">'+
+                                  '<span class="title">'+value['EmployeeName']+'</span>'+
+                                  '<span class="message">Click Here!</span>'+
+                                '</p>'+
+                              '</a>'+
+                            '</li>';
+                        $("#notif_ul").append(list);
+                        // buffers automatically when created
+
+                        $last_alarm = value['id'];
+                        if($last_alarm !== null){
+                          isPlayAlarm = true;
+                        }
+                  });
+
+              }
+            });
+          }
+
+          function clearNotif(d){
+            notif_count = 0;
+            $('.notif_count').text('');
+          }
+
+          function start_play(){
+            if(isPlayAlarm == true){
+              alarm.play();
+            }
+          }
+
+          function stop_play(d) {
+            $id = d.getAttribute("data-id");
+            isPlayAlarm = false;
+            alarm.pause();
+            var alert_icon = L.icon({
+                iconUrl: './src/img/warning.png',
+
+                iconSize:     [25, 25], // size of the icon
+                iconAnchor:   [22, 22], // point of the icon which will correspond to marker's location
+                shadowAnchor: [4, 62],  // the same for the shadow
+                popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+            });
+            var n_marker = new L.marker(
+              new L.LatLng(parseFloat( d.getAttribute("data-lat")), parseFloat(d.getAttribute("data-lng"))),
+              {
+                'icon': alert_icon
+              }
+            );
+            n_marker.addTo(map);
+            map.setView(new L.LatLng(parseFloat( d.getAttribute("data-lat")), parseFloat(d.getAttribute("data-lng"))), 15);
+            $.ajax({
+              url: 'http://210.14.16.69:8080/api/mobile.php',
+              type: 'post',
+              data: {
+                action: 'alarmCallback',
+                alarm_id: $id
+              },
+              success: function(data){
+                console.log(data);
+              }
+            });
+          }
+
+          function init() {
+            var isStart = 1;
+            var $last_alarm = 'isFirst';
+            load_users();
+            load_users_status();
+            update_users_status();
+
+            loadAlarm();
+            init_date();
+
+            markers = new Map();
+            map = L.map('map',{}).setView([14.6181246,121.0460741], 14);
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+              maxZoom: 25,
+              id: 'mapbox.streets'
+            }).addTo(map);
+
+
+            MQ.trafficLayer().addTo(map);
+
+            request_next_batch_location();
+          }
+          function Deg2Rad( deg ) {
+             return deg * Math.PI / 180;
+          }
+
+          function getDistanceTraveled(lat, long){
+            //Toronto Latitude  43.74 and longitude  -79.37
+            //Vancouver Latitude  49.25 and longitude  -123.12
+            lat1 = Deg2Rad(coordLat);
+            lon1 = Deg2Rad(coordLng);
+            lat2 = Deg2Rad(lat);
+            lon2 = Deg2Rad(long);
+            latDiff = lat2-lat1;
+            lonDiff = lon2-lon1;
+            var R = 6371000; // metres
+            var φ1 = lat1;
+            var φ2 = lat2;
+            var Δφ = latDiff;
+            var Δλ = lonDiff;
+
+            var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+                    Math.cos(φ1) * Math.cos(φ2) *
+                    Math.sin(Δλ/2) * Math.sin(Δλ/2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+            var d = R * c;
+
+            var dist = Math.acos( Math.sin(φ1)*Math.sin(φ2) + Math.cos(φ1)*Math.cos(φ2) * Math.cos(Δλ) ) * R;
+            dist = dist / 10000;
+            totaldist =totaldist+ dist;
+          }
+
+          function move_marker(haveUser = null) {
+            _batch_location.forEach(function(batch_location) {
+              var marker = markers.get(batch_location['CourierDriverID']);
+              if (marker != undefined) {
+
+                var ll = marker.getLatLng();
+                var from = new L.LatLng(ll.lat, ll.lng);
+                var to = new L.LatLng(parseFloat(batch_location['latitude']), parseFloat(batch_location['longitude']));
+
+                if(haveUser !== null){
+                  if(coordLat == null && coordLng == null){
+                    coordLat = parseFloat(batch_location['latitude']);
+                    coordLng = parseFloat(batch_location['longitude']);
+                  }
+                  getDistanceTraveled(parseFloat(batch_location['latitude']), parseFloat(batch_location['longitude']));
+                  var new_line = new L.Polyline([from, to], {
+                    color: 'red',
+                    weight: 3,
+                    opacity: 1.0,
+                    smoothFactor: 1
+                  });
+                  new_line.addTo(map);
+                }
+                marker.setLatLng(to);
+              } else {
+                console.log("else");
+                var new_marker = new L.marker(new L.LatLng(parseFloat(batch_location['latitude']), parseFloat(batch_location['longitude'])));
+                _info.forEach(function(info) {
+                  if (info["CourierDriverID"] == batch_location['CourierDriverID'])
+                  {
+                   new_marker.bindPopup("<b>" + info["name"] + "</b><br>" +
+                    info["branch"]);
+                 }
+               });
+
+                new_marker.addTo(map);
+
+                new_marker.on('mouseover', function(e) {
+                  this.openPopup();
+                });
+                new_marker.on('mouseout', function(e){
+                  this.closePopup();
+                });
+
+                markers.set(batch_location['CourierDriverID'], new_marker);
+
+
+              }
+            });
+            if(haveUser !== null){
+                  $('#distancetraveled').text(totaldist.toFixed(2));
+                        $('#distancetraveled_div').show();
+            }
+          }
+
+          function map_to_json(map) {
+            var json_obj = {};
+            map.forEach(function(val, key) {
+              json_obj[key] = val;
+            });
+            return JSON.stringify(json_obj);
+          }
+          
+
+
+          function get_distinct_latest_locations() {
+
+            var batch_location_temp = _batch_location;
+
+            var map_struct = new Map();
+
+            var length = Object.keys(batch_location_temp).length;
+
+            for (var a = 0; a < length; a++) {
+              map_struct.set(batch_location_temp[a]['CourierDriverID'], batch_location_temp[a]['ID']);
+            }
+            return map_to_json(map_struct);
+
+          }
+
+          function request_next_batch_location() {
+
+            var is_searched = localStorage.getItem("searched");
+            var search_result = document.getElementById('search_result');
+
+            var searched_date = new Date(document.getElementById("date").valueAsDate);
+            searched_date = searched_date.getFullYear() + "-" + (searched_date.getMonth() + 1) + "-" + (searched_date.getDate());
+
+
+            var searched_date_end = new Date(document.getElementById("date_end").valueAsDate);
+            searched_date_end = searched_date_end.getFullYear() + "-" + (searched_date_end.getMonth() + 1) + "-" + (searched_date_end.getDate());
+
+            if (_batch_location != null) {
+              console.log('_batch_location');
+              console.log(_batch_location);
+              $.ajax({
+                url: 'http://210.14.16.69:8080/api/mobile.php',
+                type: 'post',
+                data: {
+                  action: 'location',
+                  _batch_location: get_distinct_latest_locations(),
+                  date: searched_date,
+                  type: 'get'
+                },
+                success: function(data) {
+                  var json_temp = JSON.parse(data);
+                  if (Object.keys(json_temp).length > 0) {
+                    console.log("greater than 0 if");
+                    _batch_location = json_temp['location'];
+                    _info = json_temp['info'];
+                    move_marker(); // get localstorage
+
+                  } else {
+                    console.log("less than 0 if");
+                  }
+                }
+              });
+            } else {
+
+              //default data
+              var data = {
+                action: 'location',
+                date: searched_date,
+                type: 'get',
+                search_type: 'dateonly'
+              }
+
+              var id = localStorage.getItem("searched_user_id");
+              var text = localStorage.getItem("searched_user_text");
+
+              ////for search by name and date
+              if ( id != null )
+              {
+                data.search_type = 'user_and_date';
+                data.user_id = id;
+              }
+
+              $.ajax({
+                url: 'http://210.14.16.69:8080/api/mobile.php',
+                type: 'post',
+                data: data,
+                success: function(data) {
+                  var json_temp = JSON.parse(data);
+                  _batch_location = json_temp['location'];
+                  _info = json_temp['info'];
+                  console.log(json_temp);
+                  if (Object.keys(_batch_location).length > 0) {
+                    if ( is_searched == null ) {
+                      search_result.innerHTML = "Today's realtime activities";
+                    }
+                    else {
+                      if ( id == null ) {
+                        search_result.innerHTML = "Activities for " + searched_date + " to " + searched_date_end;
+                      }
+                      else {
+                        search_result.innerHTML = "Activities of " + text + " in " + searched_date + " to " + searched_date_end;
+                      }
+                    }
+
+                    move_marker(id);
+                  }
+                  else {
+                    if ( is_searched == null ) {
+                      search_result.innerHTML = "No activities as of now";
+                    }
+                    else {
+                      if ( id == null ) {
+                        search_result.innerHTML = "No Activities for " + searched_date + " to " + searched_date_end;
+                      }
+                      else {
+                        search_result.innerHTML = "No activities for " + text + " in " + searched_date + " to " + searched_date_end;
+                      }
+                    }
+                  }
+
+
+
+                }
+              });
+
+            }
+            localStorage.clear();
+          }
+
+    </script>
   </body>
 </html>

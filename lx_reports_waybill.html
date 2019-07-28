@@ -1,0 +1,845 @@
+<!doctype html>
+<html class="sidebar-light sidebar-left-big-icons fixed sidebar-left-with-menu">
+	<head>
+
+		<!-- Basic -->
+		<meta charset="UTF-8">
+
+		<title>LX Monitoring Waybills report</title>
+		<meta name="keywords" content="HTML5 Admin Template" />
+		<meta name="description" content="Porto Admin - Responsive HTML5 Template">
+		<meta name="author" content="okler.net">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Web Fonts  -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="vendor/animate/animate.css">
+
+		<link rel="stylesheet" href="vendor/font-awesome/css/fontawesome-all.min.css" />
+		<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css" />
+		<link rel="stylesheet" href="vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
+
+		<!-- Specific Page Vendor CSS -->
+		<link rel="stylesheet" href="vendor/select2/css/select2.css" />
+		<link rel="stylesheet" href="vendor/select2-bootstrap-theme/select2-bootstrap.min.css" />
+		<link rel="stylesheet" href="vendor/datatables/media/css/dataTables.bootstrap4.css" />
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="css/theme.css" />
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="css/skins/default.css" />
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Head Libs -->
+		<script src="vendor/modernizr/modernizr.js"></script>
+
+	</head>
+	<body class="loading-overlay-showing data-loading-overlay">
+		<div id="loadingScreen" class="loading-overlay">
+					<div class="bounce-loader">
+						<div class="bounce1"></div>
+						<div class="bounce2"></div>
+						<div class="bounce3"></div>
+					</div>
+		</div>
+		<section class="body">
+
+
+			<header class="header">
+				<div class="logo-container">
+				  <a href="../2.1.1" class="logo">
+					<img src="img/lx_logo.png" width="75" height="35" alt="Porto Admin" />
+				  </a>
+				  <div class="d-md-none toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+					<i class="fas fa-bars" aria-label="Toggle sidebar"></i>
+				  </div>
+				</div>
+		
+						<!-- start: search & user box -->
+						<div class="header-right">
+		
+		
+						  <span class="separator"></span>
+		
+						  <ul class="notifications">
+							<!-- <li>
+							  <a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+								<i class="fas fa-tasks"></i>
+								<span class="badge">3</span>
+							  </a>
+		
+							  <div class="dropdown-menu notification-menu large">
+								<div class="notification-title">
+								  <span class="float-right badge badge-default">3</span>
+								  Tasks
+								</div>
+		
+								<div class="content">
+								  <ul>
+									<li>
+									  <p class="clearfix mb-1">
+										<span class="message float-left">Generating Sales Report</span>
+										<span class="message float-right text-dark">60%</span>
+									  </p>
+									  <div class="progress progress-xs light">
+										<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+									  </div>
+									</li>
+		
+									<li>
+									  <p class="clearfix mb-1">
+										<span class="message float-left">Importing Contacts</span>
+										<span class="message float-right text-dark">98%</span>
+									  </p>
+									  <div class="progress progress-xs light">
+										<div class="progress-bar" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="width: 98%;"></div>
+									  </div>
+									</li>
+		
+									<li>
+									  <p class="clearfix mb-1">
+										<span class="message float-left">Uploading something big</span>
+										<span class="message float-right text-dark">33%</span>
+									  </p>
+									  <div class="progress progress-xs light mb-1">
+										<div class="progress-bar" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;"></div>
+									  </div>
+									</li>
+								  </ul>
+								</div>
+							  </div>
+							</li>
+							<li>
+							  <a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+								<i class="fas fa-envelope"></i>
+								<span class="badge">4</span>
+							  </a>
+		
+							  <div class="dropdown-menu notification-menu">
+								<div class="notification-title">
+								  <span class="float-right badge badge-default">230</span>
+								  Messages
+								</div>
+		
+								<div class="content">
+								  <ul>
+									<li>
+									  <a href="#" class="clearfix">
+										<figure class="image">
+										  <img src="img/!sample-user.jpg" alt="Joseph Doe Junior" class="rounded-circle" />
+										</figure>
+										<span class="title">Joseph Doe</span>
+										<span class="message">Lorem ipsum dolor sit.</span>
+									  </a>
+									</li>
+									<li>
+									  <a href="#" class="clearfix">
+										<figure class="image">
+										  <img src="img/!sample-user.jpg" alt="Joseph Junior" class="rounded-circle" />
+										</figure>
+										<span class="title">Joseph Junior</span>
+										<span class="message truncate">Truncated message. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet lacinia orci. Proin vestibulum eget risus non luctus. Nunc cursus lacinia lacinia. Nulla molestie malesuada est ac tincidunt. Quisque eget convallis diam, nec venenatis risus. Vestibulum blandit faucibus est et malesuada. Sed interdum cursus dui nec venenatis. Pellentesque non nisi lobortis, rutrum eros ut, convallis nisi. Sed tellus turpis, dignissim sit amet tristique quis, pretium id est. Sed aliquam diam diam, sit amet faucibus tellus ultricies eu. Aliquam lacinia nibh a metus bibendum, eu commodo eros commodo. Sed commodo molestie elit, a molestie lacus porttitor id. Donec facilisis varius sapien, ac fringilla velit porttitor et. Nam tincidunt gravida dui, sed pharetra odio pharetra nec. Duis consectetur venenatis pharetra. Vestibulum egestas nisi quis elementum elementum.</span>
+									  </a>
+									</li>
+									<li>
+									  <a href="#" class="clearfix">
+										<figure class="image">
+										  <img src="img/!sample-user.jpg" alt="Joe Junior" class="rounded-circle" />
+										</figure>
+										<span class="title">Joe Junior</span>
+										<span class="message">Lorem ipsum dolor sit.</span>
+									  </a>
+									</li>
+									<li>
+									  <a href="#" class="clearfix">
+										<figure class="image">
+										  <img src="img/!sample-user.jpg" alt="Joseph Junior" class="rounded-circle" />
+										</figure>
+										<span class="title">Joseph Junior</span>
+										<span class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet lacinia orci. Proin vestibulum eget risus non luctus. Nunc cursus lacinia lacinia. Nulla molestie malesuada est ac tincidunt. Quisque eget convallis diam.</span>
+									  </a>
+									</li>
+								  </ul>
+		
+								  <hr />
+		
+								  <div class="text-right">
+									<a href="#" class="view-more">View All</a>
+								  </div>
+								</div>
+							  </div>
+							</li> -->
+							<li>
+							  <a href="#" class="dropdown-toggle notification-icon" onClick="clearNotif(this)" data-toggle="dropdown">
+								<i class="fas fa-bell"></i>
+								<span class="badge notif_count"></span>
+							  </a>
+		
+							  <div class="dropdown-menu notification-menu">
+								<div class="notification-title">
+								  <span class="float-right badge badge-default notif_count"></span>
+								  Alerts
+								</div>
+		
+								<div class="content">
+								  <ul id="notif_ul" class="notif_ul">
+								  </ul>
+		
+								  <!-- <hr />
+		
+								  <div class="text-right">
+									<a href="#" class="view-more">View All</a>
+								  </div> -->
+								</div>
+							  </div>
+							</li>
+						  </ul>
+		
+						  <span class="separator"></span>
+		
+						  <div id="userbox" class="userbox">
+							<!-- <a href="#" data-toggle="dropdown">
+							  <figure class="profile-picture">
+								<img src="img/!logged-user.jpg" alt="Joseph Doe" class="rounded-circle" data-lock-picture="img/!logged-user.jpg" />
+							  </figure>
+							  <div class="profile-info" data-lock-name="User" data-lock-email="user@mail.com">
+								<span class="name">User</span>
+		
+							  </div>
+		
+							  <i class="fa custom-caret"></i>
+							</a>
+		
+							<div class="dropdown-menu">
+							  <ul class="list-unstyled mb-2">
+								<li class="divider"></li>
+								<li>
+								  <a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fas fa-user"></i> My Profile</a>
+								</li>
+								<li>
+								  <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fas fa-lock"></i> Lock Screen</a>
+								</li>
+								<li>
+								  <a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fas fa-power-off"></i> Logout</a>
+								</li>
+							  </ul>
+							</div> -->
+						  </div>
+						</div>
+						<!-- end: search & user box -->
+		
+			  </header>
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+
+                <aside id="sidebar-left" class="sidebar-left">
+
+                    <div class="sidebar-header">
+                        <div class="sidebar-title">
+                            Navigation
+                        </div>
+                        <div class="sidebar-toggle d-none d-md-block" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+                            <i class="fas fa-bars" aria-label="Toggle sidebar"></i>
+                        </div>
+                    </div>
+        
+
+					<div class="nano">
+						<div class="nano-content">
+							<nav id="menu" class="nav-main" role="navigation">
+		
+								<ul class="nav nav-main">
+								   <li class="nav-parent nav-expanded">
+										<a class="nav-link" href="lx_dashboard.html">
+											<i class="fas fa-home" aria-hidden="true"></i>
+											<span>Dashboard</span>
+										</a>
+									</li>
+												  <li class="nav-active">
+		
+										<a class="nav-link" href="lx_monitor.html">
+											<i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+											<span>Maps</span>
+										</a>
+									</li>
+											<li class="nav-parent nav-expanded">
+												<a class="nav-link" href="#">
+													<i class="fas fa-file-alt" aria-hidden="true"></i>
+													<span>Reports</span>
+												</a>
+												<ul class="nav nav-children">
+													<li>
+														<a class="nav-link" href="lx_reports_waybill.html">
+														   Waybills
+														</a>
+													</li>
+													<li>
+														<a class="nav-link" href="lx_reports_routes.html">
+															Routes
+														</a>
+													</li>
+													<li>
+														<a class="nav-link" href="lx_reports_alerts.html">
+															Alert
+														</a>
+													</li>
+													<li>
+														<a class="nav-link" href="lx_reports_courier.html">
+															Courier Activity
+														</a>
+													</li>
+												</ul>
+											</li>
+		
+								</ul>
+							</nav>
+		
+							<hr class="separator" />
+		
+							<div class="sidebar-widget widget-tasks">
+								<div class="widget-header">
+									<h6>Projects</h6>
+									<div class="widget-toggle">+</div>
+								</div>
+								<div class="widget-content">
+									<ul class="list-unstyled m-0">
+										<li><a href="#">Porto HTML5 Template</a></li>
+										<li><a href="#">Tucson Template</a></li>
+										<li><a href="#">Porto Admin</a></li>
+									</ul>
+								</div>
+							</div>
+		
+							<hr class="separator" />
+		
+							<div class="sidebar-widget widget-stats">
+								<div class="widget-header">
+									<h6>Company Stats</h6>
+									<div class="widget-toggle">+</div>
+								</div>
+								<div class="widget-content">
+									<ul>
+										<li>
+											<span class="stats-title">Stat 1</span>
+											<span class="stats-complete">85%</span>
+											<div class="progress">
+												<div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+													<span class="sr-only">85% Complete</span>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="stats-title">Stat 2</span>
+											<span class="stats-complete">70%</span>
+											<div class="progress">
+												<div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+													<span class="sr-only">70% Complete</span>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="stats-title">Stat 3</span>
+											<span class="stats-complete">2%</span>
+											<div class="progress">
+												<div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+													<span class="sr-only">2% Complete</span>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+		
+						<script>
+							// Maintain Scroll Position
+							if (typeof localStorage !== 'undefined') {
+								if (localStorage.getItem('sidebar-left-position') !== null) {
+									var initialPosition = localStorage.getItem('sidebar-left-position'),
+										sidebarLeft = document.querySelector('#sidebar-left .nano-content');
+		
+									sidebarLeft.scrollTop = initialPosition;
+								}
+							}
+						</script>
+		
+		
+					</div>
+        
+                </aside>
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body">
+                    <header class="page-header">
+            <h2>LX Real Time Monitoring</h2>
+
+            <div class="right-wrapper text-right">
+              <ol class="breadcrumbs">
+                <li>
+                  <a href="lx_dashboard.html">
+                    <i class="fas fa-home"></i>
+                  </a>
+                </li>
+                <li><span>Maps</span></li>
+                <li><span>Monitor</span></li>
+              </ol>
+
+              <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
+            </div>
+          </header>
+
+          <!-- start: page -->
+          <section class="content-with-menu" data-theme-gmap-builder>
+            <div class="content-with-menu-container">
+
+              <div class="inner-menu-toggle">
+                <a href="#" class="inner-menu-expand" data-open="inner-menu">
+                  Show Options <i class="fas fa-chevron-right"></i>
+                </a>
+              </div>
+
+              <menu id="content-menu" class="inner-menu" role="menu">
+                <div class="nano">
+                  <div class="nano-content">
+
+                    <div class="inner-menu-toggle-inside">
+                      <a href="#" class="inner-menu-collapse">
+                        <i class="fas fa-chevron-up d-inline-block d-md-none"></i><i class="fas fa-chevron-left d-none d-md-inline-block"></i> Hide Options
+                      </a>
+                      <a href="#" class="inner-menu-expand" data-open="inner-menu">
+                        Show Options <i class="fas fa-chevron-down"></i>
+                      </a>
+                    </div>
+
+                    <div class="inner-menu-content">
+
+                      <p class="title">Filter Report</p>
+
+                      <div class="form-group">
+                        <div class="row">
+						  <label class="col-sm-12 control-label">Select Courier Report</label>
+                          <div class="col-sm-12">
+                            <select id="user_list" data-plugin-selectTwo class="form-control populate user_list" name="users">
+                              <option value=""> All </option>
+                            </select>
+                          </div>
+                          <label class="col-sm-12 control-label">Date</label>
+                          <div class="col-sm-12">
+                            <div class="input-group">
+                            <span class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="fas fa-calendar-alt"></i>
+                              </span>
+                            </span>
+                            <input id="date" type="date"  class="form-control">
+                          </div>
+                          </div>
+
+
+                          <label class="col-sm-12 control-label" for="longitude">End Date</label>
+                          <div class="col-sm-12">
+                            <div class="input-group">
+                            <span class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="fas fa-calendar-alt"></i>
+                              </span>
+                            </span>
+                            <input id="date_end" type="date"  class="form-control">
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <hr class="separator" />
+
+                      <div class="form-group">
+                        <ul id="MarkersList" class="list-markers list-unstyled mb-3 hidden">
+                        </ul>
+
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <button id="searchBtn" class="btn btn-primary btn-block mb-3 float-right" type="button">Search</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </menu>
+              <div class="inner-body">
+                <div class="row hidden">
+                  <div class="col-lg-12">
+                    <div class="row">
+                      <div class="col-xl-4">
+                        <section class="card card-featured-left card-featured-primary mb-3">
+                          <div class="card-body">
+                            <div class="widget-summary">
+                              <div class="widget-summary-col widget-summary-col-icon">
+                                <div class="summary-icon bg-primary">
+                                  <i class="fas fa-life-ring"></i>
+                                </div>
+                              </div>
+                              <div class="widget-summary-col">
+                                <div class="summary">
+                                  <h4 class="title">Active Users</h4>
+                                  <div class="info">
+                                    <strong class="amount"><span id="b_active">0</span></strong>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                      <div class="col-xl-4">
+                        <section class="card card-featured-left card-featured-success">
+                          <div class="card-body">
+                            <div class="widget-summary">
+                              <div class="widget-summary-col widget-summary-col-icon">
+                                <div class="summary-icon bg-success">
+                                  <i class="fas fa-truck"></i>
+                                </div>
+                              </div>
+                              <div class="widget-summary-col">
+                                <div class="summary">
+                                  <h4 class="title">Intransit</h4>
+                                  <div class="info">
+                                    <strong class="amount"><span id="b_transit">0</span></strong>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                      <div class="col-xl-4">
+                        <section class="card card-featured-left card-featured-info">
+                          <div class="card-body">
+                            <div class="widget-summary">
+                              <div class="widget-summary-col widget-summary-col-icon">
+                                <div class="summary-icon bg-info">
+                                  <i class="fas fa-globe"></i>
+                                </div>
+                              </div>
+                              <div class="widget-summary-col">
+                                <div class="summary">
+                                  <h4 class="title">Total</h4>
+                                  <div class="info">
+                                    <strong class="amount"><span id="b_total">0</span></strong>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </div>
+				</div>
+					<!-- start: page -->
+					<div id="report_table" class="row hidden">
+							<div class="col">
+								<section class="card">
+									<header class="card-header">
+										<div class="card-actions">
+											<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+											<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+										</div>
+						
+										<h2 class="card-title">Table List View</h2>
+									</header>
+									<div class="card-body">
+										<table class="table table-bordered table-striped mb-0" id="datatable-waybills">
+											<thead>
+												<tr>
+													<th>TracingID</th>
+													<th>Waybill</th>
+													<th>Courier</th>
+													<th>Posted By</th>
+													<th>Receiver</th>
+													<th>Relationship</th>
+													<th>Remarks</th>
+													<th>Status</th>
+													<th>Delivery Date</th>
+													<th>Date Posted</th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+										</table>
+									</div>
+								</section>
+							</div>
+					</div>
+					<!-- end: page -->
+              </div>
+          </section>
+          <div id="modalFull" class="modal-block modal-block-full mfp-hide">
+            <section class="card">
+              <header class="card-header">
+                <h2 class="card-title">Are you sure?</h2>
+              </header>
+              <div class="card-body">
+                <div class="modal-wrapper">
+                  <div class="modal-text">
+                    <p class="mb-0">Are you sure that you want to delete this image?</p>
+                  </div>
+                </div>
+              </div>
+              <footer class="card-footer">
+                <div class="row">
+                  <div class="col-md-12 text-right">
+                    <button class="btn btn-primary modal-confirm">Confirm</button>
+                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                  </div>
+                </div>
+              </footer>
+            </section>
+          </div>
+
+          <!-- end: page -->
+        </section>
+			</div>
+
+			<aside id="sidebar-right" class="sidebar-right">
+				<div class="nano">
+					<div class="nano-content">
+						<a href="#" class="mobile-close d-md-none">
+							Collapse <i class="fas fa-chevron-right"></i>
+						</a>
+			
+						<div class="sidebar-right-wrapper">
+			
+							<div class="sidebar-widget widget-calendar">
+								<h6>Upcoming Tasks</h6>
+								<div data-plugin-datepicker data-plugin-skin="dark"></div>
+			
+								<ul>
+									<li>
+										<time datetime="2017-04-19T00:00+00:00">04/19/2017</time>
+										<span>Company Meeting</span>
+									</li>
+								</ul>
+							</div>
+			
+							<div class="sidebar-widget widget-friends">
+								<h6>Friends</h6>
+								<ul>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+			
+						</div>
+					</div>
+				</div>
+			</aside>
+		</section>
+
+		<!-- Vendor -->
+		<script src="vendor/jquery/jquery.js"></script>
+		<script src="vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+		<script src="vendor/popper/umd/popper.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.js"></script>
+		<script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script src="vendor/common/common.js"></script>
+		<script src="vendor/nanoscroller/nanoscroller.js"></script>
+		<script src="vendor/magnific-popup/jquery.magnific-popup.js"></script>
+		<script src="vendor/jquery-placeholder/jquery-placeholder.js"></script>
+		
+		<!-- Specific Page Vendor -->
+		<script src="vendor/select2/js/select2.js"></script>
+		<script src="vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+		<script src="vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
+		<script src="vendor/datatables/extras/TableTools/Buttons-1.4.2/js/dataTables.buttons.min.js"></script>
+		<script src="vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.bootstrap4.min.js"></script>
+		<script src="vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.html5.min.js"></script>
+		<script src="vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.print.min.js"></script>
+		<script src="vendor/datatables/extras/TableTools/JSZip-2.5.0/jszip.min.js"></script>
+		<script src="vendor/datatables/extras/TableTools/pdfmake-0.1.32/pdfmake.min.js"></script>
+		<script src="vendor/datatables/extras/TableTools/pdfmake-0.1.32/vfs_fonts.js"></script>
+		
+		<script>
+				$(function() {
+					console.log( "ready!" );
+					init_start();
+						var $last_alarm = 'isFirst';
+					function init_start(){
+						load_users();
+						getInitialReport();
+					}
+
+					function getInitialReport(){
+						$.ajax({
+						url: 'http://210.14.16.69:8080/api/mobile_dev.php',
+						type: 'post',
+						data: {
+							action: 'getWaybillReports',
+							from:null,
+							to:null
+						},
+						success: function(data) {
+							var res = JSON.parse(data);
+							
+							var $table = $('#datatable-waybills');
+
+							var table = $table.dataTable({
+								sDom: '<"text-right mb-md"T><"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
+								buttons: [ 'print', 'excel', 'pdf' ]
+							});
+
+							$('<div />').addClass('dt-buttons mb-2 pb-1 text-right').prependTo('#datatable-waybills_wrapper');
+
+							$table.DataTable().buttons().container().prependTo( '#datatable-waybills_wrapper .dt-buttons' );
+
+							$('#datatable-waybills_wrapper').find('.btn-secondary').removeClass('btn-secondary').addClass('btn-default');
+							// var tbody = $("<tbody />"),tr;
+							// $.each(res,function(key,obj) {
+							// 	if(key != 0){
+							// 	tr = $("<tr />");
+							// 	$.each(obj,function(_,text) {
+							// 		console.log(text);
+							// 		tr.append("<td>"+text+"</td>")
+							// 	});
+							// 	tr.appendTo(tbody);
+
+							// 	}
+							// });
+							// tbody.appendTo("#datatable-waybills"); 
+							var result = $.each(res, function(key, item){
+							  var result = [];
+							  rs = item.RelationShip == null?'--':item.RelationShip;
+							  result.push(item.TracingID);
+                              result.push(item.Waybill);
+                              result.push(item.Courier); 
+                              result.push(item.PostedBy); 
+                              result.push(item.Receiver); 
+                              result.push(rs); 
+                              result.push(item.Remarks); 
+							  result.push(item.Status);
+							  result.push(item.DeliveryDate);
+							  result.push(item.DatePosted); 
+							  table.fnAddData(result);
+                            });
+						}
+						}).done(function(){
+							$('#loadingScreen').addClass('hidden');
+							$('#report_table').removeClass('hidden');
+						});
+					}
+	
+					function load_users()
+					{
+						$.ajax({
+						url: 'http://210.14.16.69:8080/api/mobile.php',
+						type: 'post',
+						data: {
+							action: 'get_users'
+						},
+						success: function(data) {
+							var users = JSON.parse(data);
+							users.forEach(function(user) {
+							var new_option = document.createElement("OPTION");
+							new_option.setAttribute("value", user['name']);
+							new_option.text = user['name'];
+							$('.user_list').append(new_option);
+							});
+							$(document).ready(function() {
+							$('.user_list').select2();
+							});
+							var id = localStorage.getItem("searched_user_id");
+							var text = localStorage.getItem("searched_user_text");
+							if(id){
+							$("#user_list").val(id);
+							}
+						}
+						});
+					}
+					$('#searchBtn').on('click', function(){
+						search();
+					});
+					function search(){
+						$('#loadingScreen').removeClass('hidden');
+						$.ajax({
+						url: 'http://210.14.16.69:8080/api/mobile_dev.php',
+						type: 'post',
+						data: {
+							action: 'getCourier_WaybillReports',
+							courier:$('.user_list').val(),
+							from:$('#date').val(),
+							to:$('#date_end').val()
+						},
+						success: function(data) {
+							var res = JSON.parse(data);
+						}
+						}).done(function(res){
+							if(res){
+								console.log(res);
+								$('#loadingScreen').addClass('hidden');
+							}
+						});
+					}
+	
+				});
+		</script>
+		<!-- Theme Base, Components and Settings -->
+		<script src="js/theme.js"></script>
+		
+		<!-- Theme Custom -->
+		<script src="js/custom.js"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="js/theme.init.js"></script>
+
+		<!-- Examples -->
+		<script src="js/examples/examples.datatables.default.js"></script>
+		<script src="js/examples/examples.datatables.row.with.details.js"></script>
+		<script src="js/examples/examples.datatables.tabletools.js"></script>
+
+	</body>
+</html>
